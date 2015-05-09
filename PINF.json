@@ -1,11 +1,16 @@
 {
     "boot": {
-        "config": "ScriptedCloud.PINF.Tools/boot/0"
+        "config": "ScriptedCloud.PINF.Tools/boot/1"
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
             "$to": "workspace",
             "domain": "ScriptedCloud.PINF.Tools"
+        },
+        "ScriptedCloud.PINF.Tools/boot/1": {
+            "$depends": [
+                "server-testing"
+            ]
         },
         "ScriptedCloud.PINF.Tools/boot/0": {
             "$to": "pinf.me",
@@ -47,6 +52,11 @@
                     "path": "{{env.HOME}}/.ssh/pinf.me-{{env.PGS_WORKSPACE_UID}}.me_rsa"
                 }
             }
+        },
+        "github.com~pinf-to~pinf-to-travis-ci~0": {
+            "$to": "server-testing"
+
+
         },
         "github.com~pinf-to~pinf-to-digitalocean~0": {
             "$to": "server-microservices",
@@ -137,6 +147,9 @@
             "install": true
         },
         "pinf-to-travis-ci": {
+            "depends": [
+                "bash.origin"
+            ],
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master",
             "install": true
         }

@@ -1,3 +1,21 @@
 [submodule ".deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master"]
 	path = .deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master
 	url = git@github.com:pinf-to/pinf-to-travis-ci.git
+[submodule ".deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master"]
+	path = .deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master
+	url = git@github.com:pinf-io/io.pinf.pio.profile.git
+[submodule ".deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master"]
+	path = .deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master
+	url = git@github.com:pinf-logic/pinf.logic-for-dns.git
+[submodule ".deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-dnsimple.git
+[submodule ".deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-openshift.git
+[submodule ".deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-digitalocean.git
+[submodule ".deps/github.com~sourcemint~smi-for-npm~0/source/installed/master"]
+	path = .deps/github.com~sourcemint~smi-for-npm~0/source/installed/master
+	url = git@github.com:sourcemint/smi-for-npm.git

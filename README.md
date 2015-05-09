@@ -48,7 +48,7 @@ Projects that inherit from this project and add more components:
 
   * **Local Workspace Server** runs on the local developer system during development and is intended to provide data about workspace and system runtimes to IDEs.
 
-  * **Documentation Server** runs on *Github Pages* and is intended to be updated from the *Development Tools Server* as changes occur.
+  * **Documentation** runs on *Github Pages* and is intended to be updated from the *Development Tools Server* as changes occur.
 
 NOTE: This project deploys generic containers to each node of the architecture and it is left up to the developer to deploy their own code to the containers. See *Clones* for example implementations.
 

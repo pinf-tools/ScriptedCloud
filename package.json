@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "install": "./bin/install"
+  },
+  "dependencies": {
+    "bash.origin": "0.1.x"
+  }
+}

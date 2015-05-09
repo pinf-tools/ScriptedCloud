@@ -37,13 +37,13 @@ Projects that inherit from this project and add more components:
 
 ### Architecture
 
-  * **Microservices Server** is on *Digital Ocean** and intended to handle requests from developer, authorized guests and other services that are part of this system. Public access should be denied as this is a development instance of the system.
+  * **Microservices Server** is on *Digital Ocean* and intended to handle requests from developer, authorized guests and other services that are part of this system. Public access should be denied as this is a development instance of the system.
 
-  * **Development Tools Server** is on *OpenShift** and intended to have a permanent socket connection to the *Microservices Server* and *Local Workspace Server*.
+  * **Development Tools Server** is on *OpenShift* and intended to have a permanent socket connection to the *Microservices Server* and *Local Workspace Server*.
 
-  * **Testing Server** is on *Travis CI** and while running tests against the *Microservices Server* it sends log data to the *Development Tools Server*.
+  * **Testing Server** is on *Travis CI* and while running tests against the *Microservices Server* sends log data to the *Development Tools Server*.
 
-  * **Local Workspace Server** runs on the local developer system during development and is intended to provide data about workspace to IDEs.
+  * **Local Workspace Server** runs on the local developer system during development and is intended to provide data about workspace and system runtimes to IDEs.
 
 NOTE: This project deploys generic containers to each node of the architecture and it is left up to the developer to deploy their own code to the containers. See *Clones* for example implementations.
 

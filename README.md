@@ -54,6 +54,14 @@ This project deploys generic containers to each node of the architecture and it 
 
     * [github.com/sourcemint/sm.genesis](https://github.com/sourcemint/sm.genesis)
 
+### Roles
+
+This project takes on the following roles for the [genesis.pinf.org](https://github.com/pinf/genesis.pinf.org) ecosystem:
+
+  * Act as an **integration workspace** for [PINF.to](http://pinf.to) plugins relevant for the purpose of provisioning software system infrastructure.
+
+  * Publish a **root catalog** of certificates and core plugins that other projects can depend on.
+
 Usage
 -----
 

@@ -1,28 +1,33 @@
 {
     "boot": {
-        "config": "ScriptedCloud.PINF.Tools/boot/1"
+        "config": "ScriptedCloud.PINF.Tools/boot/0"
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
-            "$to": "workspace",
-            "domain": "ScriptedCloud.PINF.Tools"
+            "$to": "system",
+            "topLevelDomain": "PINF.Tools",
+            "hostname": "{{env.PGS_WORKSPACE_UID}}.ScriptedCloud.PINF.Tools",
+            "dirname": "ScriptedCloud.PINF.Tools~{{env.PGS_WORKSPACE_UID}}",
+            "privateKeyPath": "{{env.HOME}}/.ssh/ScriptedCloud.PINF.Tools-{{env.PGS_WORKSPACE_UID}}.rsa"
         },
-        "ScriptedCloud.PINF.Tools/boot/1": {
+        "ScriptedCloud.PINF.Tools/ci/0": {
+            "$to": "ScriptedCloud.PINF.Tools",
             "$depends": [
                 "server-testing"
             ]
         },
         "ScriptedCloud.PINF.Tools/boot/0": {
-            "$to": "pinf.me",
+            "$to": "ScriptedCloud.PINF.Tools",
             "$depends": [
-                "dns",
-                "upload"
+                "dns"
             ],
             "servers": {
-                "microservices": {
-                    "homepage": "{{$from.server-microservices.app.url}}"
+                "services": {
+                    "homepage": "{{$from.server-services.app.url}}"
                 },
-                "devtools": {},
+                "devtools": {
+                    "homepage": "{{$from.server-devtools.app.url}}"
+                },
                 "testing": {},
                 "docs": {}
             }
@@ -30,14 +35,14 @@
         "github.com~pinf-io~io.pinf.pio.profile~0": {
             "$to": "profile",
             "keyId": "{{env.PIO_PROFILE_KEY}}",
-            "keyName": "pinf.me-{{env.PGS_WORKSPACE_UID}}",
-            "keyPath": "{{env.HOME}}/.ssh/pinf.me-{{env.PGS_WORKSPACE_UID}}.me_rsa",
+            "keyName": "{{$from.system.dirname}}",
+            "keyPath": "{{$from.system.privateKeyPath}}",
             "stores": {
                 "aws": {
                     "s3": {
                         "region": "us-west-1",
                         "publicHost": "s3-us-west-1.amazonaws.com",
-                        "path": "pinf.me-{{env.PGS_WORKSPACE_UID}}"
+                        "path": "{{$from.system.dirname}}"
                     }
                 }
             },
@@ -49,19 +54,26 @@
                     "path": "{{activatePathFromProfilePath({{env.PIO_PROFILE_PATH}})}}"
                 },
                 "ssh.key": {
-                    "path": "{{env.HOME}}/.ssh/pinf.me-{{env.PGS_WORKSPACE_UID}}.me_rsa"
+                    "path": "{{$from.system.privateKeyPath}}"
                 }
             }
         },
         "github.com~pinf-to~pinf-to-travis-ci~0": {
             "$to": "server-testing"
         },
+        "github.com/pinf-to/pinf-to-openshift/0": {
+            "$to": "server-devtools",
+            "openshift": {
+                "app": "devtools.{{$from.system.dirname}}",
+                "cartridge": "nodejs-0.10"
+            }
+        },
         "github.com~pinf-to~pinf-to-digitalocean~0": {
-            "$to": "server-microservices",
+            "$to": "server-services",
             "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
             "dropplet": {
-                "name": "pinf.me",
-                "keyId": "pinf.me",
+                "name": "{{$from.system.dirname}}",
+                "keyId": "{{$from.system.dirname}}",
                 "keyPath": "{{$from.profile.keyPath}}",
                 "keyPubPath": "{{$from.profile.keyPubPath}}"
             }
@@ -71,30 +83,40 @@
             "credentials": "{{$from.profile.credentials['dnsimple.com']}}",
             "github.com/pinf-logic/pinf.logic-for-dns/0": {
                 "records": {
-                    "pinf.me": {
-                        "domain": "pinf.me",
+                    "{{$from.system.hostname}}": {
+                        "domain": "{{$from.system.topLevelDomain}}",
                         "type": "A",
-                        "data": "{{$from.live.vm.ip}}"
+                        "data": "{{$from.server-services.vm.ip}}"
                     },
-                    "*.pinf.me": {
-                        "domain": "pinf.me",
+                    "*.{{$from.system.hostname}}": {
+                        "domain": "{{$from.system.topLevelDomain}}",
                         "type": "CNAME",
-                        "data": "pinf.me"
+                        "data": "{{$from.system.hostname}}"
+                    },
+                    "devtools.{{$from.system.hostname}}": {
+                        "domain": "{{$from.system.topLevelDomain}}",
+                        "type": "A",
+                        "data": "{{$from.server-devtools.app.ip}}"
+                    },
+                    "*.devtools.{{$from.system.hostname}}": {
+                        "domain": "{{$from.system.topLevelDomain}}",
+                        "type": "CNAME",
+                        "data": "devtools.{{$from.system.hostname}}"
                     },
                     "email:10": {
-                        "domain": "pinf.me",
+                        "domain": "{{$from.system.topLevelDomain}}",
                         "type": "MX",
                         "data": "grkd-1.inbound10.luxsci.com",
                         "prio": 10
                     },
                     "email:20": {
-                        "domain": "pinf.me",
+                        "domain": "{{$from.system.topLevelDomain}}",
                         "type": "MX",
                         "data": "grkd-1.inbound20.luxsci.com",
                         "prio": 20
                     },
                     "email:30": {
-                        "domain": "pinf.me",
+                        "domain": "{{$from.system.topLevelDomain}}",
                         "type": "MX",
                         "data": "grkd-1.inbound30.luxsci.com",
                         "prio": 30

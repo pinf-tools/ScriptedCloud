@@ -42,7 +42,7 @@ This project deploys generic containers to each node of the architecture and it 
 
     * [github.com/devcomp-io/io.devcomp.vm](https://github.com/devcomp-io/io.devcomp.vm)
 
-  * **Testing Server** is on *Travis CI* and while running tests against the *Microservices Server* sends log data to the *Development Tools Server*.
+  * **Testing Client** is on *Travis CI* and while running tests against the *Microservices Server* sends log data to the *Development Tools Server*.
 
     * [github.com/sourcemint/sm.genesis](https://github.com/sourcemint/sm.genesis)
 

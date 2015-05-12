@@ -55,8 +55,6 @@
         },
         "github.com~pinf-to~pinf-to-travis-ci~0": {
             "$to": "server-testing"
-
-
         },
         "github.com~pinf-to~pinf-to-digitalocean~0": {
             "$to": "server-microservices",

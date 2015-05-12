@@ -16,6 +16,3 @@
 [submodule ".deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"]
 	path = .deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master
 	url = git@github.com:pinf-to/pinf-to-digitalocean.git
-[submodule ".deps/github.com~sourcemint~smi-for-npm~0/source/installed/master"]
-	path = .deps/github.com~sourcemint~smi-for-npm~0/source/installed/master
-	url = git@github.com:sourcemint/smi-for-npm.git

@@ -139,13 +139,6 @@
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master",
             "install": true
         },
-        "smi-for-npm": {
-            "depends": [
-                "bash.origin"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~sourcemint~smi-for-npm~0/source/installed/master",
-            "install": true
-        },
         "pinf-to-travis-ci": {
             "depends": [
                 "bash.origin"

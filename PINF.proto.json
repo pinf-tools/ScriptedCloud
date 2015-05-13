@@ -1,0 +1,119 @@
+{
+    "boot": {
+        "config": "ScriptedCloud.PINF.Tools/boot/0"
+    },
+    "config": {
+        "ScriptedCloud.PINF.Tools/0": {
+            "$to": "system"
+        },
+        "ScriptedCloud.PINF.Tools/boot/0": {
+            "$to": "ScriptedCloud.PINF.Tools",
+            "servers": {
+                "services": {
+                    "homepage": "{{$from.server-services.app.url}}"
+                },
+                "devtools": {
+                    "homepage": "{{$from.server-devtools.app.url}}"
+                },
+                "testing": {},
+                "docs": {}
+            }
+        },
+        "github.com~pinf-io~io.pinf.pio.profile~0": {
+            "$to": "profile",
+            "keyId": "{{env.PIO_PROFILE_KEY}}",
+            "keyName": "{{$from.system.dirname}}",
+            "keyPath": "{{$from.system.privateKeyPath}}",
+            "stores": {
+                "aws": {
+                    "s3": {
+                        "region": "us-west-1",
+                        "publicHost": "s3-us-west-1.amazonaws.com",
+                        "path": "{{$from.system.dirname}}"
+                    }
+                }
+            },
+            "files": {
+                "profile.json": {
+                    "path": "{{env.PIO_PROFILE_PATH}}"
+                },
+                "activate.sh": {
+                    "path": "{{activatePathFromProfilePath({{env.PIO_PROFILE_PATH}})}}"
+                },
+                "ssh.key": {
+                    "path": "{{$from.system.privateKeyPath}}"
+                }
+            }
+        },
+        "github.com/pinf-to/pinf-to-openshift/0": {
+            "$to": "server-devtools",
+            "openshift": {
+                "app": "devtools.{{$from.system.dirname}}",
+                "cartridge": "nodejs-0.10"
+            }
+        },
+        "github.com~pinf-to~pinf-to-digitalocean~0": {
+            "$to": "server-services",
+            "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
+            "dropplet": {
+                "name": "{{$from.system.dirname}}",
+                "keyId": "{{$from.system.dirname}}",
+                "keyPath": "{{$from.profile.keyPath}}",
+                "keyPubPath": "{{$from.profile.keyPubPath}}"
+            }
+        }
+    },
+    "mappings": {
+        "./../.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master",
+            "install": false
+        },
+        "pinf-to-openshift": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master",
+            "install": false
+        },
+        "./../.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master",
+            "install": false
+        },
+        "pinf-to-dnsimple": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master",
+            "install": false
+        },
+        "./../.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master",
+            "install": false
+        },
+        "pinf.logic-for-dns": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master",
+            "install": false
+        },
+        "./../.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master",
+            "install": false
+        },
+        "io.pinf.pio.profile": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master",
+            "install": false
+        },
+        "./../.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master",
+            "install": false
+        },
+        "pinf-to-digitalocean": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master",
+            "install": false
+        },
+        "./../.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master",
+            "install": false
+        },
+        "pinf-to-travis-ci": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master",
+            "install": false
+        }
+    },
+    "@overlays": [
+        "{{env.PIO_PROFILE_PATH}}"
+    ]    
+}

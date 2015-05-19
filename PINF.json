@@ -64,6 +64,9 @@
         "github.com/pinf-to/pinf-to-openshift/0": {
             "$to": "server-devtools",
             "openshift": {
+                "publicKeyPath": "{{$from.profile.keyPubPath}}",
+                "publicKeyName": "{{$from.system.dirname}}",
+                "privateKeyPath": "{{$from.profile.keyPath}}",
                 "app": "devtools.{{$from.system.dirname}}",
                 "cartridge": "nodejs-0.10"
             }

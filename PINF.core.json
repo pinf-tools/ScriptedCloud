@@ -7,7 +7,7 @@
             "$to": "system"
         },
         "ScriptedCloud.PINF.Tools/ci/0": {
-            "$to": "ScriptedCloud.PINF.Tools",
+            "$to": "ScriptedCloud.PINF.Tools-ci",
             "$depends": [
                 "server-testing"
             ]

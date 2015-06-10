@@ -1,0 +1,38 @@
+{
+    "@applicator": "org.pinf.lib/0/json-patch",
+    "@args": {
+        "records": {}
+    },
+    "patches": [
+        [
+            "$.config['ScriptedCloud.PINF.Tools/boot/0']['$depends']",
+            [
+                "dns"
+            ]
+        ],
+        [
+            "$.config",
+            {
+                "github.com/pinf-to/pinf-to-dnsimple/0": {
+                    "$to": "dns",
+                    "credentials": "{{$from.profile.credentials['dnsimple.com']}}",
+                    "github.com/pinf-logic/pinf.logic-for-dns/0": {
+                        "records": {
+                            "@inject": "{{$.@args.records}}",
+                            "{{$from.system.hostname}}": {
+                                "domain": "{{$from.system.topLevelDomain}}",
+                                "type": "A",
+                                "data": "{{$from.server-services.vm.ip}}"
+                            },
+                            "*.{{$from.system.hostname}}": {
+                                "domain": "{{$from.system.topLevelDomain}}",
+                                "type": "CNAME",
+                                "data": "{{$from.system.hostname}}"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    ]
+}

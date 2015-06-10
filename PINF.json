@@ -1,26 +1,20 @@
 {
-    "boot": {
-        "config": "ScriptedCloud.PINF.Tools/boot/0"
+    "@extends": {
+        "ScriptedCloud": "{{__DIRNAME__}}/PINF.proto.json",
+        "to.pinf.dnsimple": {
+            "location": "{{__DIRNAME__}}/PINF.proto/to.pinf.dnsimple.proto.patch.json"
+        }
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
-            "$to": "system",
             "topLevelDomain": "PINF.Tools",
             "hostname": "{{env.PGS_WORKSPACE_UID}}.ScriptedCloud.PINF.Tools",
             "dirname": "ScriptedCloud.PINF.Tools~{{env.PGS_WORKSPACE_UID}}",
             "privateKeyPath": "{{env.HOME}}/.ssh/ScriptedCloud.PINF.Tools-{{env.PGS_WORKSPACE_UID}}.rsa"
         },
-        "ScriptedCloud.PINF.Tools/ci/0": {
-            "$to": "ScriptedCloud.PINF.Tools",
-            "$depends": [
-                "server-testing"
-            ]
-        },
         "ScriptedCloud.PINF.Tools/boot/0": {
             "$to": "ScriptedCloud.PINF.Tools",
-            "$depends": [
-                "dns"
-            ],
+            "$depends": [],
             "servers": {
                 "services": {
                     "homepage": "{{$from.server-services.app.url}}"
@@ -31,142 +25,25 @@
                 "testing": {},
                 "docs": {}
             }
-        },
-        "github.com~pinf-io~io.pinf.pio.profile~0": {
-            "$to": "profile",
-            "keyId": "{{env.PIO_PROFILE_KEY}}",
-            "keyName": "{{$from.system.dirname}}",
-            "keyPath": "{{$from.system.privateKeyPath}}",
-            "stores": {
-                "aws": {
-                    "s3": {
-                        "region": "us-west-1",
-                        "publicHost": "s3-us-west-1.amazonaws.com",
-                        "path": "{{$from.system.dirname}}"
-                    }
-                }
-            },
-            "files": {
-                "profile.json": {
-                    "path": "{{env.PIO_PROFILE_PATH}}"
-                },
-                "activate.sh": {
-                    "path": "{{activatePathFromProfilePath({{env.PIO_PROFILE_PATH}})}}"
-                },
-                "ssh.key": {
-                    "path": "{{$from.system.privateKeyPath}}"
-                }
-            }
-        },
-        "github.com~pinf-to~pinf-to-travis-ci~0": {
-            "$to": "server-testing"
-        },
-        "github.com/pinf-to/pinf-to-openshift/0": {
-            "$to": "server-devtools",
-            "openshift": {
-                "publicKeyPath": "{{$from.profile.keyPubPath}}",
-                "publicKeyName": "{{$from.system.dirname}}",
-                "privateKeyPath": "{{$from.profile.keyPath}}",
-                "app": "devtools.{{$from.system.dirname}}",
-                "cartridge": "nodejs-0.10"
-            }
-        },
-        "github.com~pinf-to~pinf-to-digitalocean~0": {
-            "$to": "server-services",
-            "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
-            "dropplet": {
-                "name": "{{$from.system.dirname}}",
-                "keyId": "{{$from.system.dirname}}",
-                "keyPath": "{{$from.profile.keyPath}}",
-                "keyPubPath": "{{$from.profile.keyPubPath}}"
-            }
-        },
-        "github.com~pinf-to~pinf-to-dnsimple~0": {
-            "$to": "dns",
-            "credentials": "{{$from.profile.credentials['dnsimple.com']}}",
-            "github.com/pinf-logic/pinf.logic-for-dns/0": {
-                "records": {
-                    "{{$from.system.hostname}}": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "A",
-                        "data": "{{$from.server-services.vm.ip}}"
-                    },
-                    "*.{{$from.system.hostname}}": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "CNAME",
-                        "data": "{{$from.system.hostname}}"
-                    },
-                    "devtools.{{$from.system.hostname}}": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "A",
-                        "data": "{{$from.server-devtools.app.ip}}"
-                    },
-                    "*.devtools.{{$from.system.hostname}}": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "CNAME",
-                        "data": "devtools.{{$from.system.hostname}}"
-                    },
-                    "email:10": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "MX",
-                        "data": "grkd-1.inbound10.luxsci.com",
-                        "prio": 10
-                    },
-                    "email:20": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "MX",
-                        "data": "grkd-1.inbound20.luxsci.com",
-                        "prio": 20
-                    },
-                    "email:30": {
-                        "domain": "{{$from.system.topLevelDomain}}",
-                        "type": "MX",
-                        "data": "grkd-1.inbound30.luxsci.com",
-                        "prio": 30
-                    }
-                }
-            }
         }
     },
     "mappings": {
         "pinf-to-openshift": {
-            "depends": [
-                "bash.origin",
-                "to.pinf.lib"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master",
             "install": true
         },
         "pinf-to-dnsimple": {
-            "depends": [
-                "bash.origin",
-                "to.pinf.lib",
-                "pinf.logic-for-dns"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master",
             "install": true
         },
         "pinf.logic-for-dns": {
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master",
             "install": true
         },
         "io.pinf.pio.profile": {
-            "depends": [
-                "bash.origin",
-                "to.pinf.lib"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master",
             "install": true
         },
         "pinf-to-digitalocean": {
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master",
             "install": true
         },
         "pinf-to-travis-ci": {
-            "depends": [
-                "bash.origin"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master",
             "install": true
         }
     },

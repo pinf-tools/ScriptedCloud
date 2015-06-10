@@ -1,0 +1,114 @@
+{
+    "boot": {
+        "config": "ScriptedCloud.PINF.Tools/boot/0"
+    },
+    "config": {
+        "ScriptedCloud.PINF.Tools/0": {
+            "$to": "system"
+        },
+        "ScriptedCloud.PINF.Tools/ci/0": {
+            "$to": "ScriptedCloud.PINF.Tools",
+            "$depends": [
+                "server-testing"
+            ]
+        },
+        "ScriptedCloud.PINF.Tools/boot/0": {
+            "$to": "ScriptedCloud.PINF.Tools"
+        },
+        "github.com/pinf-io/io.pinf.pio.profile/0": {
+            "$to": "profile",
+            "keyId": "{{env.PIO_PROFILE_KEY}}",
+            "keyName": "{{$from.system.dirname}}",
+            "keyPath": "{{$from.system.privateKeyPath}}",
+            "stores": {
+                "aws": {
+                    "s3": {
+                        "region": "us-west-1",
+                        "publicHost": "s3-us-west-1.amazonaws.com",
+                        "path": "{{$from.system.dirname}}"
+                    }
+                }
+            },
+            "files": {
+                "profile.json": {
+                    "path": "{{env.PIO_PROFILE_PATH}}"
+                },
+                "activate.sh": {
+                    "path": "{{activatePathFromProfilePath({{env.PIO_PROFILE_PATH}})}}"
+                },
+                "ssh.key": {
+                    "path": "{{$from.system.privateKeyPath}}"
+                }
+            }
+        },
+        "github.com/pinf-to/pinf-to-openshift/0": {
+            "$to": "server-devtools",
+            "openshift": {
+                "publicKeyPath": "{{$from.profile.keyPubPath}}",
+                "publicKeyName": "{{$from.system.dirname}}",
+                "privateKeyPath": "{{$from.profile.keyPath}}",
+                "app": "devtools.{{$from.system.dirname}}",
+                "cartridge": "nodejs-0.10"
+            },
+            "env": {
+                "PIO_HOME": "$HOME/app-root/data/io.pinf",
+                "BO_ROOT_SCRIPT_PATH": "$HOME/app-root/data/io.pinf/bin/bash.origin",
+                "BO_SYSTEM_CACHE_DIR": "$HOME/app-root/data/io.pinf/cache/bash.origin.cache"
+            }
+        },
+        "github.com/pinf-to/pinf-to-digitalocean/0": {
+            "$to": "server-services",
+            "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
+            "dropplet": {
+                "name": "{{$from.system.dirname}}",
+                "keyId": "{{$from.system.dirname}}",
+                "keyPath": "{{$from.profile.keyPath}}",
+                "keyPubPath": "{{$from.profile.keyPubPath}}"
+            },
+            "env": {
+                "PIO_HOME": "$HOME/io.pinf",
+                "BO_ROOT_SCRIPT_PATH": "$HOME/io.pinf/bin/bash.origin",
+                "BO_SYSTEM_CACHE_DIR": "$HOME/io.pinf/cache/bash.origin.cache"
+            }
+        },
+        "github.com/pinf-to/pinf-to-travis-ci/0": {
+            "$to": "server-testing"
+        }
+    },
+    "mappings": {
+        "pinf-to-openshift": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"
+        },
+        "pinf-to-dnsimple": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib",
+                "pinf.logic-for-dns"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master"
+        },
+        "pinf.logic-for-dns": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master"
+        },
+        "io.pinf.pio.profile": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master"
+        },
+        "pinf-to-digitalocean": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"
+        },
+        "pinf-to-travis-ci": {
+            "depends": [
+                "bash.origin"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master"
+        }
+    } 
+}

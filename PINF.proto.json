@@ -1,6 +1,6 @@
 {
     "@extends": {
-        "ScriptedCloud": "{{__DIRNAME__}}/PINF.core.json"
+        "ScriptedCloud/PINF.core.json": "{{__DIRNAME__}}/PINF.core.json"
     },
     "mappings": {
         "./../.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master": {

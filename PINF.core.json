@@ -4,7 +4,10 @@
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
-            "$to": "system"
+            "$to": "system",
+            "$depends": [
+                "smi-git-catalog"
+            ]
         },
         "ScriptedCloud.PINF.Tools/ci/0": {
             "$to": "ScriptedCloud.PINF.Tools-ci",
@@ -17,6 +20,12 @@
         },
         "ScriptedCloud.PINF.Tools/boot/0": {
             "$to": "ScriptedCloud.PINF.Tools"
+        },
+        "github.com/sourcemint/smi-for-git/0": {
+            "$to": "smi-git-catalog",
+            "export": {
+                "catalog": "{{env.PGS_WORKSPACE_ROOT}}/smi.json"
+            }
         },
         "github.com/pinf-io/io.pinf.pio.profile/0": {
             "$to": "profile",

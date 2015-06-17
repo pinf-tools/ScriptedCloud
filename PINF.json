@@ -37,6 +37,9 @@
         "pinf.logic-for-dns": {
             "install": true
         },
+        "space.pinf.genesis": {
+            "install": true
+        },
         "io.pinf.pio.profile": {
             "install": true
         },

@@ -27,6 +27,25 @@
                 "catalog": "{{env.PGS_WORKSPACE_ROOT}}/smi.json"
             }
         },
+        "github.com/pinf-space/Genesis~0": {
+            "$to": "space",
+            "space.pinf.genesis/origin/0": {
+                "@impl": "io.pinf.pio.profile/origin/0",
+                "uid": "{{env.PIO_PROFILE_KEY}}",
+                "label": "{{$from.system.dirname}}",
+                "secret": {
+                    "keyPath": "{{$from.system.privateKeyPath}}"
+                },
+                "stores": {
+                    "primary": {
+                        "@impl": "com.amazon.aws/s3/0",
+                        "region": "us-west-1",
+                        "publicHost": "s3-us-west-1.amazonaws.com",
+                        "path": "{{$from.system.dirname}}"
+                    }
+                }
+            }
+        },
         "github.com/pinf-io/io.pinf.pio.profile/0": {
             "$to": "profile",
             "keyId": "{{env.PIO_PROFILE_KEY}}",
@@ -105,6 +124,9 @@
         },
         "pinf.logic-for-dns": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master"
+        },
+        "space.pinf.genesis": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master"
         },
         "io.pinf.pio.profile": {
             "depends": [

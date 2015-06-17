@@ -15,6 +15,10 @@
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master",
             "install": false
         },
+        "./../.deps/github.com~pinf-space~Genesis~0/source/installed/master": {
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master",
+            "install": false
+        },
         "./../.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master",
             "install": false
@@ -34,6 +38,9 @@
             "install": false
         },
         "pinf.logic-for-dns": {
+            "install": false
+        },
+        "space.pinf.genesis": {
             "install": false
         },
         "io.pinf.pio.profile": {

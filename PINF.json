@@ -17,10 +17,7 @@
             "$depends": [],
             "servers": {
                 "services": {
-                    "homepage": "{{$from.server-services.app.url}}"
-                },
-                "devtools": {
-                    "homepage": "{{$from.server-devtools.app.url}}"
+                    "homepage": "{{$from['server-services'].app.url}}"
                 },
                 "testing": {},
                 "docs": {}

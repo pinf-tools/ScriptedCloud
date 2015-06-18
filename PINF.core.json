@@ -27,11 +27,11 @@
                 "catalog": "{{env.PGS_WORKSPACE_ROOT}}/smi.json"
             }
         },
-        "github.com/pinf-space/Genesis~0": {
+        "github.com/pinf-space/Genesis/0": {
             "$to": "space",
             "space.pinf.genesis/origin/0": {
-                "@impl": "io.pinf.pio.profile/origin/0",
-                "uid": "{{env.PIO_PROFILE_KEY}}",
+                "@impl": "io.pinf.pio.profile/space.pinf.genesis-origin/0",
+                "id": "{{env.PIO_PROFILE_KEY}}",
                 "label": "{{$from.system.dirname}}",
                 "secret": {
                     "keyPath": "{{$from.system.privateKeyPath}}"
@@ -39,27 +39,22 @@
                 "stores": {
                     "primary": {
                         "@impl": "com.amazon.aws/s3/0",
-                        "region": "us-west-1",
-                        "publicHost": "s3-us-west-1.amazonaws.com",
-                        "path": "{{$from.system.dirname}}"
+                        "s3": {
+                            "region": "us-west-1",
+                            "publicHost": "s3-us-west-1.amazonaws.com",
+                            "path": "{{$from.system.dirname}}"
+                        }
                     }
                 }
+            },
+            "space.pinf.genesis/access/0": {
+                "@impl": "io.pinf.pio.profile/space.pinf.genesis-access/0"
             }
         },
         "github.com/pinf-io/io.pinf.pio.profile/0": {
             "$to": "profile",
-            "keyId": "{{env.PIO_PROFILE_KEY}}",
-            "keyName": "{{$from.system.dirname}}",
-            "keyPath": "{{$from.system.privateKeyPath}}",
-            "stores": {
-                "aws": {
-                    "s3": {
-                        "region": "us-west-1",
-                        "publicHost": "s3-us-west-1.amazonaws.com",
-                        "path": "{{$from.system.dirname}}"
-                    }
-                }
-            },
+            "space.pinf.genesis/origin/0": "{{$from.space['$space.pinf.genesis/origin/0']}}",
+            "space.pinf.genesis/access/0": "{{$from.space['$space.pinf.genesis/access/0']}}",
             "files": {
                 "profile.json": {
                     "path": "{{env.PIO_PROFILE_PATH}}"
@@ -75,9 +70,9 @@
         "github.com/pinf-to/pinf-to-openshift/0": {
             "$to": "server-devtools",
             "openshift": {
-                "publicKeyPath": "{{$from.profile.keyPubPath}}",
+                "publicKeyPath": "{{$from.space['$space.pinf.genesis/origin/0'].public.keyPath}}",
                 "publicKeyName": "{{$from.system.dirname}}",
-                "privateKeyPath": "{{$from.profile.keyPath}}",
+                "privateKeyPath": "{{$from.space['$space.pinf.genesis/origin/0'].secret.keyPath}}",
                 "app": "devtools.{{$from.system.dirname}}",
                 "cartridge": "nodejs-0.10"
             },
@@ -93,8 +88,8 @@
             "dropplet": {
                 "name": "{{$from.system.dirname}}",
                 "keyId": "{{$from.system.dirname}}",
-                "keyPath": "{{$from.profile.keyPath}}",
-                "keyPubPath": "{{$from.profile.keyPubPath}}"
+                "keyPath": "{{$from.space['$space.pinf.genesis/origin/0'].secret.keyPath}}",
+                "keyPubPath": "{{$from.space['$space.pinf.genesis/origin/0'].public.keyPath}}"
             },
             "env": {
                 "PIO_HOME": "$HOME/io.pinf",

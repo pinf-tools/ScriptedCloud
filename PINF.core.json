@@ -24,11 +24,8 @@
         },
         "github.com/pinf-tools/CloudCommands/0": {
             "$to": "ScriptedCloud.PINF.Tools-commands",
-            "commands": {
-                "root.space.invite": {
-                    "@impl": "space.pinf.genesis/origin/get-invite-token",
-                    "scope": "root"
-                }
+            "tools.pinf.CloudCommands/commands/0": {
+                "register": true
             }
         },
         "github.com/sourcemint/smi-for-git/0": {
@@ -59,6 +56,17 @@
             },
             "space.pinf.genesis/access/0": {
                 "@impl": "io.pinf.pio.profile/space.pinf.genesis-access/0"
+            },
+            "tools.pinf.CloudCommands/commands/0": {
+                "commands": {
+                    "root.space.invite": {
+                        "@impl": "space.pinf.genesis/origin.get-invite-token/0",
+                        "label": "[ROOT] Invite someone into this space on EQUAL TERMS AS YOU!",
+                        "options": {
+                            "scope": "root"
+                        }
+                    }
+                }
             }
         },
         "github.com/pinf-io/io.pinf.pio.profile/0": {

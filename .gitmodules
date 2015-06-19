@@ -19,3 +19,6 @@
 [submodule ".deps/github.com~pinf-space~Genesis~0/source/installed/master"]
 	path = .deps/github.com~pinf-space~Genesis~0/source/installed/master
 	url = git@github.com:pinf-space/Genesis.git
+[submodule ".deps/github.com~pinf-tools~CloudCommands~0/source/installed/master"]
+	path = .deps/github.com~pinf-tools~CloudCommands~0/source/installed/master
+	url = git@github.com:pinf-tools/CloudCommands.git

@@ -6,7 +6,8 @@
         "ScriptedCloud.PINF.Tools/0": {
             "$to": "system",
             "$depends": [
-                "smi-git-catalog"
+                "smi-git-catalog",
+                "ScriptedCloud.PINF.Tools-commands"
             ]
         },
         "ScriptedCloud.PINF.Tools/ci/0": {
@@ -20,6 +21,15 @@
         },
         "ScriptedCloud.PINF.Tools/boot/0": {
             "$to": "ScriptedCloud.PINF.Tools"
+        },
+        "github.com/pinf-tools/CloudCommands/0": {
+            "$to": "ScriptedCloud.PINF.Tools-commands",
+            "commands": {
+                "root.space.invite": {
+                    "@impl": "space.pinf.genesis/origin/get-invite-token",
+                    "scope": "root"
+                }
+            }
         },
         "github.com/sourcemint/smi-for-git/0": {
             "$to": "smi-git-catalog",
@@ -122,6 +132,12 @@
         },
         "space.pinf.genesis": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master"
+        },
+        "tools.pinf.CloudCommands": {
+            "depends": [
+                "space.pinf.genesis"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-tools~CloudCommands~0/source/installed/master"
         },
         "io.pinf.pio.profile": {
             "depends": [

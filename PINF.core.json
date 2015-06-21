@@ -7,6 +7,7 @@
             "$to": "system",
             "$depends": [
                 "smi-git-catalog",
+                "smi-npm-catalog",
                 "ScriptedCloud.PINF.Tools-commands"
             ]
         },
@@ -30,6 +31,13 @@
         },
         "github.com/sourcemint/smi-for-git/0": {
             "$to": "smi-git-catalog",
+            "export": {
+                "catalog": "{{env.PGS_WORKSPACE_ROOT}}/smi.json"
+            }
+        },
+        "github.com/sourcemint/smi-for-npm/0": {
+            "$to": "smi-npm-catalog",
+            "declaredMappings": "{{$from.smi-git-catalog.declaredMappings}}",
             "export": {
                 "catalog": "{{env.PGS_WORKSPACE_ROOT}}/smi.json"
             }

@@ -3,35 +3,35 @@
         "ScriptedCloud/PINF.core.json": "{{__DIRNAME__}}/PINF.core.json"
     },
     "mappings": {
-        "./../.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-openshift~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-tools~CloudCommands~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-tools~CloudCommands~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-tools~CloudCommands~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-space~Genesis~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-space~Genesis~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master",
             "install": false
         },
-        "./../.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master": {
+        "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master": {
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master",
             "install": false
         },

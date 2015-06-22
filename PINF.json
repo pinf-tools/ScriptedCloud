@@ -5,6 +5,9 @@
             "location": "{{__DIRNAME__}}/PINF.proto/to.pinf.dnsimple.proto.patch.json"
         }
     },
+    "boot": {
+        "config": "ScriptedCloud.PINF.Tools/boot/0"
+    },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
             "topLevelDomain": "PINF.Tools",

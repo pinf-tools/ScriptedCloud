@@ -88,6 +88,14 @@
                 "ssh.key": {
                     "path": "{{$from.system.privateKeyPath}}"
                 }
+            },
+            "credentials": {
+                "aws.amazon.com": {
+                },
+                "dnsimple.com": {
+                },
+                "digitalocean.com": {
+                }
             }
         },
         "github.com/pinf-to/pinf-to-openshift/0": {

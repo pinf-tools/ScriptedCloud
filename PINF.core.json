@@ -133,7 +133,7 @@
                 "bash.origin",
                 "to.pinf.lib"
             ],
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"
         },
         "pinf-to-dnsimple": {
             "depends": [
@@ -141,35 +141,35 @@
                 "to.pinf.lib",
                 "pinf.logic-for-dns"
             ],
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-dnsimple~0/source/installed/master"
         },
         "pinf.logic-for-dns": {
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-logic~pinf.logic-for-dns~0/source/installed/master"
         },
         "space.pinf.genesis": {
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-space~Genesis~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master"
         },
         "tools.pinf.CloudCommands": {
             "depends": [
                 "space.pinf.genesis"
             ],
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-tools~CloudCommands~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-tools~CloudCommands~0/source/installed/master"
         },
         "io.pinf.pio.profile": {
             "depends": [
                 "bash.origin",
                 "to.pinf.lib"
             ],
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master"
         },
         "pinf-to-digitalocean": {
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"
         },
         "pinf-to-travis-ci": {
             "depends": [
                 "bash.origin"
             ],
-            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master"
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master"
         }
     } 
 }

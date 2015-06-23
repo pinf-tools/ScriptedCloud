@@ -100,6 +100,7 @@
         },
         "github.com/pinf-to/pinf-to-openshift/0": {
             "$to": "server-devtools",
+            "enabled": false,
             "openshift": {
                 "publicKeyPath": "{{$from.space['$space.pinf.genesis/origin/0'].public.keyPath}}",
                 "publicKeyName": "{{$from.system.dirname}}",
@@ -115,6 +116,7 @@
         },
         "github.com/pinf-to/pinf-to-digitalocean/0": {
             "$to": "server-services",
+            "enabled": false,
             "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
             "dropplet": {
                 "name": "{{$from.system.dirname}}",

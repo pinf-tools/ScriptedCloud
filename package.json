@@ -1,4 +1,5 @@
 {
+  "uid": "github.com~pinf-tools~ScriptedCloud~0",
   "scripts": {
     "install": "./bin/install"
   },

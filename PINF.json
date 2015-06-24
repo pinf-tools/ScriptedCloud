@@ -1,9 +1,6 @@
 {
     "@extends": {
-        "ScriptedCloud": "{{__DIRNAME__}}/PINF.proto.json",
-        "to.pinf.dnsimple": {
-            "location": "{{__DIRNAME__}}/PINF.proto/to.pinf.dnsimple.proto.patch.json"
-        }
+        "ScriptedCloud": "{{__DIRNAME__}}/PINF.proto.json"
     },
     "boot": {
         "config": "ScriptedCloud.PINF.Tools/boot/0"

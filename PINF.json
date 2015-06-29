@@ -24,32 +24,6 @@
             }
         }
     },
-    "mappings": {
-        "pinf-to-openshift": {
-            "install": true
-        },
-        "pinf-to-dnsimple": {
-            "install": true
-        },
-        "pinf.logic-for-dns": {
-            "install": true
-        },
-        "tools.pinf.CloudCommands": {
-            "install": true
-        },
-        "space.pinf.genesis": {
-            "install": true
-        },
-        "io.pinf.pio.profile": {
-            "install": true
-        },
-        "pinf-to-digitalocean": {
-            "install": true
-        },
-        "pinf-to-travis-ci": {
-            "install": true
-        }
-    },
     "@overlays": [
         "{{env.PIO_PROFILE_PATH}}"
     ]

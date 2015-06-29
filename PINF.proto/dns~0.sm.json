@@ -1,0 +1,20 @@
+{
+    "@github.com~sourcemint~sm.expand~0/map": {
+        "sources": {
+            "github.com~pinf-to~pinf-to-dnsimple~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-to/pinf-to-dnsimple.git"
+                }
+            },
+            "github.com~pinf-logic~pinf.logic-for-dns~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-logic/pinf.logic-for-dns.git"
+                }
+            }
+        },
+        "mappings": {
+            "pinf-to-dnsimple": "github.com~pinf-to~pinf-to-dnsimple~0/master",
+            "pinf.logic-for-dns": "github.com~pinf-logic~pinf.logic-for-dns~0/master"
+        }
+    }    
+}

@@ -5,7 +5,7 @@
     "config": {
         "x/0": {
             "$to": {
-                "dns~0.config.json": {
+                "dns~0.enable.json": {
                     "$depends": [
                         "dns"
                     ]

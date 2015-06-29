@@ -1,6 +1,6 @@
 {
     "@extends": {
-        "ScriptedCloud/PINF.proto/dns~0.smi.json": "{{__DIRNAME__}}/PINF.proto/dns~0.smi.json"
+        "ScriptedCloud/PINF.proto/dns~0.smi.json": "{{__DIRNAME__}}/PINF.proto/dns~0.sm.json"
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {
@@ -137,38 +137,46 @@
             "$to": "server-testing"
         }
     },
-    "mappings": {
-        "pinf-to-openshift": {
-            "depends": [
-                "bash.origin",
-                "to.pinf.lib"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"
+    "@github.com~sourcemint~sm.expand~0/map": {
+        "sources": {
+            "github.com~pinf-to~pinf-to-openshift~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-to/pinf-to-openshift.git"
+                }
+            },
+            "github.com~pinf-space~Genesis~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-space/Genesis.git"
+                }
+            },
+            "github.com~pinf-tools~CloudCommands~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-tools/CloudCommands.git"
+                }
+            },
+            "github.com~pinf-io~io.pinf.pio.profile~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-io/io.pinf.pio.profile.git"
+                }
+            },
+            "github.com~pinf-to~pinf-to-digitalocean~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-to/pinf-to-digitalocean.git"
+                }
+            },
+            "github.com~pinf-to~pinf-to-travis-ci~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-to/pinf-to-travis-ci.git"
+                }
+            }
         },
-        "space.pinf.genesis": {
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-space~Genesis~0/source/installed/master"
-        },
-        "tools.pinf.CloudCommands": {
-            "depends": [
-                "space.pinf.genesis"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-tools~CloudCommands~0/source/installed/master"
-        },
-        "io.pinf.pio.profile": {
-            "depends": [
-                "bash.origin",
-                "to.pinf.lib"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-io~io.pinf.pio.profile~0/source/installed/master"
-        },
-        "pinf-to-digitalocean": {
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-digitalocean~0/source/installed/master"
-        },
-        "pinf-to-travis-ci": {
-            "depends": [
-                "bash.origin"
-            ],
-            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-travis-ci~0/source/installed/master"
+        "mappings": {
+            "pinf-to-openshift": "github.com~pinf-to~pinf-to-openshift~0/master",
+            "space.pinf.genesis": "github.com~pinf-space~Genesis~0/master",
+            "tools.pinf.CloudCommands": "github.com~pinf-tools~CloudCommands~0/master",
+            "io.pinf.pio.profile": "github.com~pinf-io~io.pinf.pio.profile~0/master",
+            "pinf-to-digitalocean": "github.com~pinf-to~pinf-to-digitalocean~0/master",
+            "pinf-to-travis-ci": "github.com~pinf-to~pinf-to-travis-ci~0/master"
         }
-    } 
+    }
 }

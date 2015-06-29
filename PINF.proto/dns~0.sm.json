@@ -3,12 +3,14 @@
         "sources": {
             "github.com~pinf-to~pinf-to-dnsimple~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-to/pinf-to-dnsimple.git"
+                    "uri": "git://git@github.com:pinf-to/pinf-to-dnsimple.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-logic~pinf.logic-for-dns~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-logic/pinf.logic-for-dns.git"
+                    "uri": "git://git@github.com:pinf-logic/pinf.logic-for-dns.git",
+                    "installer": "npm"
                 }
             }
         },

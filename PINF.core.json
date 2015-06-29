@@ -141,32 +141,38 @@
         "sources": {
             "github.com~pinf-to~pinf-to-openshift~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-to/pinf-to-openshift.git"
+                    "uri": "git://git@github.com:pinf-to/pinf-to-openshift.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-space~Genesis~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-space/Genesis.git"
+                    "uri": "git://git@github.com:pinf-space/Genesis.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-tools~CloudCommands~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-tools/CloudCommands.git"
+                    "uri": "git://git@github.com:pinf-tools/CloudCommands.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-io~io.pinf.pio.profile~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-io/io.pinf.pio.profile.git"
+                    "uri": "git://git@github.com:pinf-io/io.pinf.pio.profile.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-to~pinf-to-digitalocean~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-to/pinf-to-digitalocean.git"
+                    "uri": "git://git@github.com:pinf-to/pinf-to-digitalocean.git",
+                    "installer": "npm"
                 }
             },
             "github.com~pinf-to~pinf-to-travis-ci~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-to/pinf-to-travis-ci.git"
+                    "uri": "git://git@github.com:pinf-to/pinf-to-travis-ci.git",
+                    "installer": "npm"
                 }
             }
         },

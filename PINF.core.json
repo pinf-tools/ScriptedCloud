@@ -1,6 +1,6 @@
 {
     "@extends": {
-        "ScriptedCloud/PINF.proto/dns~0.smi.json": "{{__DIRNAME__}}/PINF.proto/dns~0.sm.json"
+        "ScriptedCloud/PINF.proto/dns~0.sm.json": "{{__DIRNAME__}}/PINF.proto/dns~0.sm.json"
     },
     "config": {
         "ScriptedCloud.PINF.Tools/0": {

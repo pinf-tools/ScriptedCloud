@@ -174,6 +174,12 @@
                     "uri": "git://git@github.com:pinf-to/pinf-to-travis-ci.git",
                     "installer": "npm"
                 }
+            },
+            "github.com~sourcemint~sm.sync~0": {
+                "master": {
+                    "uri": "git://git@github.com:sourcemint/sm.sync.git",
+                    "installer": "npm"
+                }
             }
         },
         "mappings": {
@@ -182,7 +188,8 @@
             "tools.pinf.CloudCommands": "github.com~pinf-tools~CloudCommands~0/master",
             "io.pinf.pio.profile": "github.com~pinf-io~io.pinf.pio.profile~0/master",
             "pinf-to-digitalocean": "github.com~pinf-to~pinf-to-digitalocean~0/master",
-            "pinf-to-travis-ci": "github.com~pinf-to~pinf-to-travis-ci~0/master"
+            "pinf-to-travis-ci": "github.com~pinf-to~pinf-to-travis-ci~0/master",
+            "sm.sync": "github.com~sourcemint~sm.sync~0/master"
         }
     }
 }

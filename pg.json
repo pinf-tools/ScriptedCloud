@@ -1,0 +1,234 @@
+{
+    "@extends": {
+        "ScriptedCloud": {
+            "location": "{{env.PGS_PACKAGES_DIRPATH}}/github.com~pinf-tools~ScriptedCloud~0/source/installed/master/PINF.proto.json",
+            "@args": {}
+        }
+    },
+    "config": {
+        "genesis.pinf.org/0": {
+            "$impl": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.pgs/vortex.default/../pgs-run.js",
+            "programs": {
+                ".pgs": {
+                    "location": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.pgs/program.json",
+                    "env": {
+                        "PGS_PINF_EPOCH": "expand.genesis.pinf.org"
+                    }
+                }
+            },
+            "$to": "pgs",
+            "uid": "github.com~pinf-tools~ScriptedCloud~0",
+            "basename": "pinf.tools.ScriptedCloud",
+            "workspaceRoot": "/pinf.genesis/03-pinf.tools.ScriptedCloud"
+        },
+        "pgs-vortex-default/0": {
+            "$depends": [
+                "pgs-vortex-sm-contract",
+                "pgs-vortex-pg-condense"
+            ],
+            "$impl": "{{$from.pgs.workspaceRoot}}/vortex.js",
+            "$to": "pgs-vortex-default",
+            "rootPath": "{{$from.pgs-vortex-prompt.services.pgs.variables.PGS_WORKSPACE_ROOT}}"
+        },
+        "github.com/bash-origin/bash.origin.prompt/0": {
+            "$to": "pgs-vortex-prompt",
+            "services": {
+                "pgs": {
+                    "label": "PINF.Genesis System",
+                    "url": "http://genesis.pinf.org",
+                    "variables": {
+                        "PGS_WORKSPACE_UID": {
+                            "value": "github.com~pinf-tools~ScriptedCloud~0"
+                        },
+                        "PGS_WORKSPACE_UID_DOMAINSAFE": {
+                            "value": "github-com-pinf-tools-ScriptedCloud-0"
+                        },
+                        "PGS_WORKSPACE_ROOT": {
+                            "value": "/pinf.genesis/03-pinf.tools.ScriptedCloud"
+                        },
+                        "PGS_PINF_DIRPATH": {
+                            "value": "/pinf.genesis.cache/03-pinf.tools.ScriptedCloud"
+                        },
+                        "PGS_PACKAGES_DIRPATH": {
+                            "value": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.deps"
+                        },
+                        "BO_PACKAGES_DIR": {
+                            "value": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.deps"
+                        },
+                        "BO_GLOBAL_SYSTEM_CACHE_DIR": {
+                            "value": "/Users/cadorn/.bash.origin.cache"
+                        }
+                    }
+                }
+            }
+        },
+        "github.com/sourcemint/sm.contract/0": {
+            "$impl": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.deps/github.com~sourcemint~sm.contract~0/source/installed/master/api/pgl.plugin.js",
+            "$to": "pgs-vortex-sm-contract"
+        },
+        "github.com/pinf/pg.condense/0": {
+            "$impl": "/pinf.genesis/03-pinf.tools.ScriptedCloud/.deps/github.com~pinf~pg.condense~0/source/installed/master/api/pgl.plugin.js",
+            "$to": "pgs-vortex-pg-condense"
+        },
+        "ScriptedCloud.PINF.Tools/0": {
+            "$to": "system",
+            "$depends": [
+                "ScriptedCloud.PINF.Tools-commands"
+            ],
+            "topLevelDomain": "PINF.Tools",
+            "hostname": "github.com~pinf-tools~ScriptedCloud~0.ScriptedCloud.PINF.Tools",
+            "dirname": "ScriptedCloud.PINF.Tools~github.com~pinf-tools~ScriptedCloud~0",
+            "privateKeyPath": "/Users/cadorn/.ssh/ScriptedCloud.PINF.Tools-github.com~pinf-tools~ScriptedCloud~0.rsa"
+        },
+        "ScriptedCloud.PINF.Tools/ci/0": {
+            "$to": "ScriptedCloud.PINF.Tools-ci",
+            "$depends": [
+                "server-testing"
+            ]
+        },
+        "ScriptedCloud.PINF.Tools/expand-only/0": {
+            "$to": "ScriptedCloud.PINF.Tools-expand-only"
+        },
+        "ScriptedCloud.PINF.Tools/condense-only/0": {
+            "$to": "ScriptedCloud.PINF.Tools-condense-only",
+            "$depends": [
+                "pgs-vortex-default"
+            ]
+        },
+        "ScriptedCloud.PINF.Tools/boot/0": {
+            "$to": "ScriptedCloud.PINF.Tools",
+            "$depends": [],
+            "servers": {
+                "services": {
+                    "homepage": "{{$from['server-services'].app.url}}"
+                },
+                "testing": {},
+                "docs": {}
+            }
+        },
+        "github.com/pinf-tools/CloudCommands/0": {
+            "$to": "ScriptedCloud.PINF.Tools-commands",
+            "tools.pinf.CloudCommands/commands/0": {
+                "register": true
+            }
+        },
+        "github.com/pinf-space/Genesis/0": {
+            "$to": "space",
+            "space.pinf.genesis/origin/0": {
+                "@impl": "io.pinf.pio.profile/space.pinf.genesis-origin/0",
+                "id": "github.com~pinf-tools~ScriptedCloud~0",
+                "label": "{{$from.system.dirname}}",
+                "secret": {
+                    "keyPath": "{{$from.system.privateKeyPath}}"
+                },
+                "stores": {
+                    "primary": {
+                        "@impl": "com.amazon.aws/s3/0",
+                        "s3": {
+                            "region": "us-west-1",
+                            "publicHost": "s3-us-west-1.amazonaws.com",
+                            "path": "{{$from.system.dirname}}",
+                            "bucket": "profile.pio.pinf.io"
+                        },
+                        "iamUserName": "pinf.me",
+                        "accessKeyId": "AKIAJ6VAB5SQQNC6EZSQ",
+                        "secretAccessKey": "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"
+                    }
+                }
+            },
+            "space.pinf.genesis/access/0": {
+                "@impl": "io.pinf.pio.profile/space.pinf.genesis-access/0"
+            },
+            "tools.pinf.CloudCommands/commands/0": {
+                "commands": {
+                    "root.space.invite": {
+                        "@impl": "space.pinf.genesis/origin.get-invite-token/0",
+                        "label": "[ROOT] Invite someone into this space on EQUAL TERMS AS YOU!",
+                        "options": {
+                            "scope": "root"
+                        }
+                    }
+                }
+            }
+        },
+        "github.com/pinf-io/io.pinf.pio.profile/0": {
+            "$to": "profile",
+            "space.pinf.genesis/origin/0": "{{$from.space['$space.pinf.genesis/origin/0']}}",
+            "space.pinf.genesis/access/0": "{{$from.space['$space.pinf.genesis/access/0']}}",
+            "files": {
+                "profile.json": {
+                    "path": "/pinf.genesis/03-pinf.tools.ScriptedCloud.profile.json"
+                },
+                "activate.sh": {
+                    "path": "{{activatePathFromProfilePath(/pinf.genesis/03-pinf.tools.ScriptedCloud.profile.json)}}"
+                },
+                "ssh.key": {
+                    "path": "{{$from.system.privateKeyPath}}"
+                }
+            },
+            "credentials": {
+                "aws.amazon.com": {
+                    "email": "dev@organicsoftware.io",
+                    "iamUserName": "pinf.me",
+                    "accessKeyId": "AKIAJ6VAB5SQQNC6EZSQ",
+                    "secretAccessKey": "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"
+                },
+                "dnsimple.com": {
+                    "email": "christoph@christophdorn.com",
+                    "token": "3PJb319QVT8CUE6Jg8KF"
+                },
+                "digitalocean.com": {
+                    "email": "christoph@christophdorn.com",
+                    "token": "92d5fdbc002e84ad7825375f49d94b0f1b6402c6b4cea41da2b74360901d1234",
+                    "tokenName": "pinf.genesis/pinf.me"
+                }
+            }
+        },
+        "github.com/pinf-to/pinf-to-openshift/0": {
+            "$to": "server-devtools",
+            "enabled": false,
+            "openshift": {
+                "publicKeyPath": "{{$from.space['$space.pinf.genesis/origin/0'].public.keyPath}}",
+                "publicKeyName": "{{$from.system.dirname}}",
+                "privateKeyPath": "{{$from.space['$space.pinf.genesis/origin/0'].secret.keyPath}}",
+                "app": "devtools.{{$from.system.dirname}}",
+                "cartridge": "nodejs-0.10"
+            },
+            "env": {
+                "PIO_HOME": "$HOME/app-root/data/io.pinf",
+                "BO_ROOT_SCRIPT_PATH": "$HOME/app-root/data/io.pinf/bin/bash.origin",
+                "BO_SYSTEM_CACHE_DIR": "$HOME/app-root/data/io.pinf/cache/bash.origin.cache"
+            }
+        },
+        "github.com/pinf-to/pinf-to-digitalocean/0": {
+            "$to": "server-services",
+            "enabled": false,
+            "credentials": "{{$from.profile.credentials['digitalocean.com']}}",
+            "dropplet": {
+                "name": "{{$from.system.dirname}}",
+                "keyId": "{{$from.system.dirname}}",
+                "keyPath": "{{$from.space['$space.pinf.genesis/origin/0'].secret.keyPath}}",
+                "keyPubPath": "{{$from.space['$space.pinf.genesis/origin/0'].public.keyPath}}"
+            },
+            "env": {
+                "PIO_HOME": "$HOME/io.pinf",
+                "BO_ROOT_SCRIPT_PATH": "$HOME/io.pinf/bin/bash.origin",
+                "BO_SYSTEM_CACHE_DIR": "$HOME/io.pinf/cache/bash.origin.cache"
+            }
+        },
+        "github.com/pinf-to/pinf-to-travis-ci/0": {
+            "$to": "server-testing"
+        }
+    },
+    "@github.com~sourcemint~sm.expand~0/map": {
+        "sources": {
+            "github.com~pinf-tools~ScriptedCloud~0": {
+                "master": {
+                    "uri": "git://git@github.com:pinf-tools/ScriptedCloud.git#d531a29ebd269f325c8c4759f2e3a094df870bbe(master)",
+                    "installer": "npm"
+                }
+            }
+        },
+        "mappings": {}
+    }
+}

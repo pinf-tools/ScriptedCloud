@@ -18,6 +18,12 @@
         "ScriptedCloud.PINF.Tools/expand-only/0": {
             "$to": "ScriptedCloud.PINF.Tools-expand-only"
         },
+        "ScriptedCloud.PINF.Tools/condense-only/0": {
+            "$to": "ScriptedCloud.PINF.Tools-condense-only",
+            "$depends": [
+                "pgs-vortex-default"
+            ]
+        },
         "ScriptedCloud.PINF.Tools/boot/0": {
             "$to": "ScriptedCloud.PINF.Tools"
         },

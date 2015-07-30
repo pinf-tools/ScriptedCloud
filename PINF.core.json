@@ -6,7 +6,8 @@
         "ScriptedCloud.PINF.Tools/0": {
             "$to": "system",
             "$depends": [
-                "ScriptedCloud.PINF.Tools-commands"
+                "ScriptedCloud.PINF.Tools-commands",
+                "pgs-vortex-default"
             ]
         },
         "ScriptedCloud.PINF.Tools/ci/0": {

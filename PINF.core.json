@@ -138,8 +138,7 @@
             },
             "github.com~pinf-to~pinf-to-openshift~0": {
                 "master": {
-                    "uri": "git://git@github.com:pinf-to/pinf-to-openshift.git",
-                    "installer": "npm"
+                    "uri": "git://git@github.com:pinf-to/pinf-to-openshift.git"
                 }
             },
             "github.com~pinf-space~Genesis~0": {

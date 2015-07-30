@@ -181,7 +181,6 @@
         "mappings": {
             "github.com~pinf~genesis.pinf.org~0": "github.com~pinf~genesis.pinf.org~0/master",
             "pinf-to-openshift": "github.com~pinf-to~pinf-to-openshift~0/master",
-            "pinf-to-openshift": "github.com~pinf-to~pinf-to-openshift~0/master",
             "space.pinf.genesis": "github.com~pinf-space~Genesis~0/master",
             "tools.pinf.CloudCommands": "github.com~pinf-tools~CloudCommands~0/master",
             "io.pinf.pio.profile": "github.com~pinf-io~io.pinf.pio.profile~0/master",
